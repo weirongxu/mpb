@@ -5,8 +5,8 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "docs:api": "typedoc --out pages ./src",
-    "upload:docs": "yarn run docs:api",
+    "docs:api": "typedoc --out ./pages ./src",
+    "upload:docs": "yarn run docs:api && gh-pages -d ./pages",
     "prepare": "yarn run build"
   },
   "main": "lib/index.js",

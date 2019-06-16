@@ -76,16 +76,16 @@ ProgressBar.create({
 [more examples](./examples/src)
 
 ## Screenshot
-[Single progress bar](./examples/src/single.ts)
+### [Single progress bar](./examples/src/single.ts)
 [![Single progress bar](https://asciinema.org/a/EZvZHrH81HOSHkx9PyqRLmmLN.svg)](https://asciinema.org/a/EZvZHrH81HOSHkx9PyqRLmmLN)
 
-[Multiple progress bar](./examples/src/multi.ts)
+### [Multiple progress bar](./examples/src/multi.ts)
 [![Multiple progress bar](https://asciinema.org/a/1zVuA9veknBZqJC2pbxfCC7sw.svg)](https://asciinema.org/a/1zVuA9veknBZqJC2pbxfCC7sw)
 
-[Custom render](./examples/src/custom-token.ts)
+### [Custom render](./examples/src/custom-token.ts)
 [![Custom render](https://asciinema.org/a/ZKsTed0tCoPAgdTQfevhhiSf0.svg)](https://asciinema.org/a/ZKsTed0tCoPAgdTQfevhhiSf0)
 
-[Progress bar width logger](./examples/src/buffer-with-logger.ts)
+### [Progress bar width logger](./examples/src/buffer-with-logger.ts)
 [![Progress bar width logger](https://asciinema.org/a/EGFHdeKK4SbTMoK6KvgStuELP.svg)](https://asciinema.org/a/EGFHdeKK4SbTMoK6KvgStuELP)
 
 ## Run examples
@@ -95,3 +95,5 @@ cd examples
 yarn
 ts-node src/multi.ts
 ```
+
+## [API docs](https://weirongxu.github.io/mpb/)
