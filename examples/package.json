@@ -1,0 +1,10 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@types/gradient-string": "^1.1.0",
+    "gradient-string": "^1.2.0",
+    "ink-select-input": "^3.1.1"
+  }
+}
