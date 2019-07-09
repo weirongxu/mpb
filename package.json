@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "chalk": "^2.4.2",
-    "cli-cursor": "^3.0.0",
+    "cli-cursor": "^3.1.0",
     "string-width": "^4.1.0",
     "typed-emitter": "^0.1.0"
   },
