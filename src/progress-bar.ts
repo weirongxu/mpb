@@ -53,6 +53,24 @@ export interface ProgressBarOptions {
   multiProgressBar: MultiProgressBar;
 }
 
+/**
+ * ProgressBar
+ *
+ * @example
+ * ```javascript
+ * const bar = ProgressBar.create({
+ *   title: 'progress',
+ *   total: 100,
+ *   clean: true,
+ * });
+ * bar.event.on('update-post', (bar) => {
+ * })
+ * bar.start();
+ * bar.update(10);
+ * bar.tick(10);
+ * bar.forceCompleted();
+ * ```
+ */
 export class ProgressBar implements IProgressBar {
   title: string;
 
@@ -120,6 +138,9 @@ export class ProgressBar implements IProgressBar {
     return Math.floor((this.current / this.total) * 100);
   }
 
+  /**
+   * Used time
+   */
   get elapsed() {
     if (!this.startedAt) {
       return 0;
@@ -137,6 +158,9 @@ export class ProgressBar implements IProgressBar {
     return this.humanTime(this.elapsed);
   }
 
+  /**
+   * Estimated time
+   */
   get eta() {
     if (this.percentage === 0) {
       return 0;
@@ -161,10 +185,16 @@ export class ProgressBar implements IProgressBar {
     return this;
   }
 
+  /**
+   * Increase current progress
+   */
   tick(delta: number) {
     this.update(this.current + delta);
   }
 
+  /**
+   * Change current progress
+   */
   update(current: number) {
     if (this.completed || typeof current !== 'number') return;
     if (!this.startedAt) this.start();
@@ -185,6 +215,9 @@ export class ProgressBar implements IProgressBar {
     this.output.output();
   }
 
+  /**
+   * Force completed the progress bar
+   */
   forceCompleted() {
     if (this.completed) return;
 

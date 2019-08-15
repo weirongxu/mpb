@@ -102,6 +102,9 @@ export interface ProgressBarOutputStreamOptions
   stream: NodeJS.WriteStream;
 }
 
+/**
+ * Progress bar output to NodeJs.WriteStream
+ */
 export class ProgressBarOutputStream extends ProgressBarOutput {
   stream: NodeJS.WriteStream;
 
@@ -167,6 +170,9 @@ export class ProgressBarOutputStream extends ProgressBarOutput {
   }
 }
 
+/**
+ * Progress bar is not output
+ */
 export class ProgressBarOutputNoop extends ProgressBarOutput {
   static create(options: Partial<ProgressBarOutputOptions> = {}) {
     return new this(options);
@@ -178,6 +184,9 @@ export class ProgressBarOutputNoop extends ProgressBarOutput {
   }
 }
 
+/**
+ * Progress bar output to string
+ */
 export class ProgressBarOutputBuffer extends ProgressBarOutput {
   buffer: string = '';
 

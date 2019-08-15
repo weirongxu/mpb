@@ -7,6 +7,40 @@ import {
 } from './multi-progress-bar';
 import { ProgressBarOutputNoop } from './output';
 
+/**
+ * useProgressBar
+ *
+ * [ink](https://github.com/vadimdemedes/ink)
+ *
+ * @example
+ * ```javascript
+ * function App {
+ *   const [Bar, bar] = useProgressBar({
+ *     title: 'progress',
+ *     width: process.stdout.columns! - title.length - 1,
+ *     total: 100,
+ *   });
+ *
+ *   useEffect(() => {
+ *     if (! bar) return;
+ *
+ *     bar.events.on('complete-post', () => {
+ *       app.unmount();
+ *     });
+ *
+ *     const timer = setInterval(() => {
+ *       bar.tick(1);
+ *     }, 100);
+ *
+ *     return () => {
+ *       clearInterval(timer);
+ *     };
+ *   }, [bar]);
+ *
+ *   return <Text><Color blue>title</Color> <Bar/></Text>;
+ * }
+ * ```
+ */
 export function useProgressBar(
   options: Partial<ProgressBarOptions> = {}
 ): [() => JSX.Element, ProgressBar | undefined] {
@@ -39,6 +73,38 @@ export function useProgressBar(
   return [() => <>{bar ? bar.toBarString() : ''}</>, bar];
 }
 
+/**
+ * useMultiProgressBar
+ *
+ * [ink](https://github.com/vadimdemedes/ink)
+ *
+ * @example
+ * ```javascript
+ * function App() {
+ *   const [Bars, multiBar] = useMultiProgressBar({
+ *     title: 'multi progress'
+ *   });
+ *
+ *   useEffect(() => {
+ *     const bar = multiBar.startBar({
+ *       title: 'bar',
+ *       clean: true,
+ *       total: 100,
+ *       width: process.stdout.columns!,
+ *       render: themes.inverse
+ *     });
+ *     const timer = setInterval(() => {
+ *       bar.tick(1);
+ *     }, 30);
+ *     bar.events.on('complete-post', () => {
+ *       clearInterval(timer);
+ *     });
+ *   }, [multiBar]);
+ *
+ *   return <Bars />;
+ * }
+ * ```
+ */
 export function useMultiProgressBar(
   options: Partial<MultiProgressBarOptions> = {}
 ): [() => JSX.Element, MultiProgressBar | undefined] {

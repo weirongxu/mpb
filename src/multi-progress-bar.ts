@@ -21,6 +21,32 @@ export interface MultiProgressBarOptions {
   output: ProgressBarOutput;
 }
 
+/**
+ * MultiProgressBar
+ *
+ * @example
+ * ```javascript
+ * const multi = MultiProgressBar.create({
+ *   title: 'download',
+ * });
+ * const bar1 = multi.createBar({
+ *   title: 'progress',
+ *   total: 100,
+ *   clean: true,
+ * });
+ * bar1.start();
+ * const bar2 = multi.startBar({
+ *   title: 'progress',
+ *   total: 100,
+ *   clean: true,
+ * });
+ * bar1.update(10);
+ * bar1.tick(10);
+ * bar2.update(10);
+ * bar2.tick(10);
+ * bar2.forceCompleted();
+ * ```
+ */
 export class MultiProgressBar implements IProgressBar {
   title: string;
 
@@ -45,7 +71,8 @@ export class MultiProgressBar implements IProgressBar {
     this.headerWidth = options.headerWidth;
     this.headerWidthPercentage = options.headerWidthPercentage;
 
-    const renderer = options.render ||
+    const renderer =
+      options.render ||
       ((draw: Draw, bar: MultiProgressBar) => draw`${bar.title}`);
     this.toBarString = compile(this, renderer, {
       width: this.headerWidth,
@@ -53,14 +80,21 @@ export class MultiProgressBar implements IProgressBar {
     });
 
     this.output =
-      options.output || ProgressBarOutputStream.create({ multiProgressBar: this });
+      options.output ||
+      ProgressBarOutputStream.create({ multiProgressBar: this });
   }
 
+  /**
+   * Start render a multiline progress bar
+   */
   start() {
     this.render();
     return this;
   }
 
+  /**
+   * Create a single progress bar
+   */
   createBar(options: Partial<ProgressBarOptions>) {
     const bar = ProgressBar.create({
       ...options,
@@ -69,6 +103,9 @@ export class MultiProgressBar implements IProgressBar {
     return bar;
   }
 
+  /**
+   * Create a single progress bar and start render
+   */
   startBar(options: Partial<ProgressBarOptions>) {
     return this.createBar(options).start();
   }
