@@ -2,6 +2,8 @@
 
 Render progress bar in terminal
 
+[![Build Status](https://travis-ci.com/weirongxu/mpb.svg?branch=master)](https://travis-ci.com/weirongxu/mpb)
+
 ## Features
 * custom template
 * render progress bar to buffer
