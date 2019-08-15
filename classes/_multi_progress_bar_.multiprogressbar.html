@@ -69,6 +69,36 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>MultiProgressBar</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><pre><code class="language-javascript"><span class="hljs-keyword">const</span> multi = MultiProgressBar.create({
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'download'</span>,
+});
+<span class="hljs-keyword">const</span> bar1 = multi.createBar({
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'progress'</span>,
+  <span class="hljs-attr">total</span>: <span class="hljs-number">100</span>,
+  <span class="hljs-attr">clean</span>: <span class="hljs-literal">true</span>,
+});
+bar1.start();
+<span class="hljs-keyword">const</span> bar2 = multi.startBar({
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'progress'</span>,
+  <span class="hljs-attr">total</span>: <span class="hljs-number">100</span>,
+  <span class="hljs-attr">clean</span>: <span class="hljs-literal">true</span>,
+});
+bar1.update(<span class="hljs-number">10</span>);
+bar1.tick(<span class="hljs-number">10</span>);
+bar2.update(<span class="hljs-number">10</span>);
+bar2.tick(<span class="hljs-number">10</span>);
+bar2.forceCompleted();</code></pre>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -129,7 +159,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L40">multi-progress-bar.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L66">multi-progress-bar.ts:66</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -151,7 +181,7 @@
 					<div class="tsd-signature tsd-kind-icon">header<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L27">multi-progress-bar.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L53">multi-progress-bar.ts:53</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -161,7 +191,7 @@
 					<div class="tsd-signature tsd-kind-icon">header<wbr>Width<wbr>Percentage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L28">multi-progress-bar.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L54">multi-progress-bar.ts:54</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -172,7 +202,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_interface_progres_bar_.iprogressbar.html">IProgressBar</a>.<a href="../interfaces/_interface_progres_bar_.iprogressbar.html#output">output</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L32">multi-progress-bar.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L58">multi-progress-bar.ts:58</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -183,7 +213,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_interface_progres_bar_.iprogressbar.html">IProgressBar</a>.<a href="../interfaces/_interface_progres_bar_.iprogressbar.html#title">title</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L25">multi-progress-bar.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L51">multi-progress-bar.ts:51</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -193,7 +223,7 @@
 					<div class="tsd-signature tsd-kind-icon">to<wbr>Bar<wbr>String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L30">multi-progress-bar.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L56">multi-progress-bar.ts:56</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -225,9 +255,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L64">multi-progress-bar.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L98">multi-progress-bar.ts:98</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a single progress bar</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -248,7 +283,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L76">multi-progress-bar.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L113">multi-progress-bar.ts:113</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -265,9 +300,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L59">multi-progress-bar.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L90">multi-progress-bar.ts:90</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Start render a multiline progress bar</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
 						</li>
 					</ul>
@@ -282,9 +322,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L72">multi-progress-bar.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L109">multi-progress-bar.ts:109</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a single progress bar and start render</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -305,7 +350,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L34">multi-progress-bar.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L60">multi-progress-bar.ts:60</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -328,7 +373,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/multi-progress-bar.ts#L38">multi-progress-bar.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/multi-progress-bar.ts#L64">multi-progress-bar.ts:64</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

@@ -92,9 +92,42 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/react-hooks.tsx#L42">react-hooks.tsx:42</a></li>
+									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/react-hooks.tsx#L108">react-hooks.tsx:108</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>useMultiProgressBar</p>
+								</div>
+								<p><a href="https://github.com/vadimdemedes/ink">ink</a></p>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> [Bars, multiBar] = useMultiProgressBar({
+    <span class="hljs-attr">title</span>: <span class="hljs-string">'multi progress'</span>
+  });
+
+  useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> bar = multiBar.startBar({
+      <span class="hljs-attr">title</span>: <span class="hljs-string">'bar'</span>,
+      <span class="hljs-attr">clean</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">total</span>: <span class="hljs-number">100</span>,
+      <span class="hljs-attr">width</span>: process.stdout.columns!,
+      <span class="hljs-attr">render</span>: themes.inverse
+    });
+    <span class="hljs-keyword">const</span> timer = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      bar.tick(<span class="hljs-number">1</span>);
+    }, <span class="hljs-number">30</span>);
+    bar.events.on(<span class="hljs-string">'complete-post'</span>, () =&gt; {
+      clearInterval(timer);
+    });
+  }, [multiBar]);
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Bars</span> /&gt;</span>;
+}</span></code></pre>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -115,9 +148,44 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/54b5116/src/react-hooks.tsx#L10">react-hooks.tsx:10</a></li>
+									<li>Defined in <a href="https://github.com/weirongxu/mpb/blob/e60ed17/src/react-hooks.tsx#L44">react-hooks.tsx:44</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>useProgressBar</p>
+								</div>
+								<p><a href="https://github.com/vadimdemedes/ink">ink</a></p>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span> </span>{
+  <span class="hljs-keyword">const</span> [Bar, bar] = useProgressBar({
+    <span class="hljs-attr">title</span>: <span class="hljs-string">'progress'</span>,
+    <span class="hljs-attr">width</span>: process.stdout.columns! - title.length - <span class="hljs-number">1</span>,
+    <span class="hljs-attr">total</span>: <span class="hljs-number">100</span>,
+  });
+
+  useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">if</span> (! bar) <span class="hljs-keyword">return</span>;
+
+    bar.events.on(<span class="hljs-string">'complete-post'</span>, () =&gt; {
+      app.unmount();
+    });
+
+    <span class="hljs-keyword">const</span> timer = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      bar.tick(<span class="hljs-number">1</span>);
+    }, <span class="hljs-number">100</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      clearInterval(timer);
+    };
+  }, [bar]);
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Text</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Color</span> <span class="hljs-attr">blue</span>&gt;</span>title<span class="hljs-tag">&lt;/<span class="hljs-name">Color</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">Bar</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span></span>;
+}</code></pre>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
