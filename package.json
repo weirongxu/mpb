@@ -2,6 +2,18 @@
   "name": "mpb",
   "version": "0.0.3",
   "license": "MIT",
+  "description": "Flexible progress bar for terminal",
+  "keywords": [
+    "progressbar",
+    "multi-progressbar",
+    "tty",
+    "terminal",
+    "tui"
+  ],
+  "author": "weirongxu.raidou@gmail.com",
+  "publisher": "weirongxu",
+  "homepage": "https://github.com/weirongxu/mpb",
+  "repository": "https://github.com/weirongxu/mpb.git",
   "scripts": {
     "build": "tsc",
     "test": "jest",
@@ -10,6 +22,7 @@
     "prepare": "yarn run build"
   },
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],

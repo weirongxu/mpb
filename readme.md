@@ -1,6 +1,6 @@
 # MultiProgressBar
 
-Render progress bar in terminal
+Flexible progress bar for terminal
 
 [![Build Status](https://travis-ci.com/weirongxu/mpb.svg?branch=master)](https://travis-ci.com/weirongxu/mpb)
 
