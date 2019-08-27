@@ -46,7 +46,6 @@ export const ansiSlice = (
       }
     }
     if (index < charsWidth.length) {
-      // sum += ansiWidth(chars[index]);
       sum += charsWidth[index];
       index += 1;
     } else {

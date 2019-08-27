@@ -93,6 +93,7 @@ export class ProgressBar implements IProgressBar {
 
   private startedAt?: Date;
   private completedAt?: Date;
+  intervalTimer?: NodeJS.Timeout;
 
   static create(options: Partial<ProgressBarOptions> = {}) {
     return new ProgressBar(options);
@@ -182,6 +183,12 @@ export class ProgressBar implements IProgressBar {
     this.output.addBar(this);
     this.render();
     this.events.emit('start-post', this);
+    this.intervalTimer = setInterval(() => {
+      this.render();
+    }, 1000);
+    this.events.on('complete-post', () => {
+      clearInterval(this.intervalTimer!);
+    });
     return this;
   }
 
