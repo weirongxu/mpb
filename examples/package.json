@@ -1,6 +1,5 @@
 {
   "name": "examples",
-  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@types/gradient-string": "^1.1.0",
