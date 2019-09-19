@@ -6,7 +6,8 @@ import {
   ansiPadAlign,
   ansiSlice,
   ansiCover,
-  ansiWidth
+  ansiWidth,
+  removeEmojiPresentation
 } from '../src/utils';
 
 test('unsigned', () => {
@@ -17,9 +18,10 @@ test('unsigned', () => {
 });
 
 test('ansiWidth', () => {
-  // FIXME
-  // expect(ansiWidth('😅️')).toEqual(2);
-  // expect(ansiWidth('😅︎')).toEqual(2);
+  expect(ansiWidth(removeEmojiPresentation('😅️'))).toEqual(2);
+  expect(ansiWidth(removeEmojiPresentation('😅︎'))).toEqual(2);
+  expect(ansiWidth('👪')).toEqual(2);
+  expect(ansiWidth('👨‍👩‍👧')).toEqual(2);
 });
 
 test('ansiSlice', () => {
@@ -28,13 +30,6 @@ test('ansiSlice', () => {
   expect(ansiSlice('一一', 0, 2)).toEqual('一');
   expect(ansiSlice('一一', 0, 1)).toEqual('');
   expect(ansiSlice('一一', 0, 0)).toEqual('');
-
-  // FIXME
-  // expect(ansiSlice('😅︎😅︎', 0, 4)).toEqual('😅︎😅︎');
-  // expect(ansiSlice('😅︎😅︎', 0, 3)).toEqual('😅︎');
-  // expect(ansiSlice('😅︎😅︎', 0, 2)).toEqual('😅︎');
-  // expect(ansiSlice('😅︎😅︎', 0, 1)).toEqual('');
-  // expect(ansiSlice('😅︎😅︎', 0, 0)).toEqual('');
 
   expect(ansiSlice('🎉🎉', 0, 4)).toEqual('🎉🎉');
   expect(ansiSlice('🎉🎉', 0, 3)).toEqual('🎉');
@@ -92,8 +87,14 @@ test('ansiCover', () => {
   expect(ansiCover('========', ' % ', 'left')).toEqual('=%======');
   expect(ansiCover('========', ' % ', 'right')).toEqual('======%=');
   expect(ansiCover('========', ' % ', 'center')).toEqual('===%====');
+  expect(ansiCover('========', '   %   ', 'left')).toEqual('===%====');
+  expect(ansiCover('========', '   %   ', 'right')).toEqual('====%===');
+  expect(ansiCover('========', '   %   ', 'center')).toEqual('===%====');
 
   expect(ansiCover('========', ' 🎉 ', 'left')).toEqual('=🎉=====');
   expect(ansiCover('========', ' 🎉 ', 'right')).toEqual('=====🎉=');
   expect(ansiCover('========', ' 🎉 ', 'center')).toEqual('===🎉===');
+  expect(ansiCover('========', '  🎉  ', 'left')).toEqual('==🎉====');
+  expect(ansiCover('========', '  🎉  ', 'right')).toEqual('====🎉==');
+  expect(ansiCover('========', '  🎉  ', 'center')).toEqual('===🎉===');
 });

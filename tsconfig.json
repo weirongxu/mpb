@@ -10,13 +10,13 @@
     "strictNullChecks": true,
     "esModuleInterop": true,
     "incremental": true,
-    "tsBuildInfoFile": "./tsconfig.tsbuildinfo",
     "typeRoots": [
       "./node_modules/@types/",
-      "./src/types/",
+      "./src/types/"
     ]
   },
   "include": [
     "src",
+    "benchmark"
   ]
 }

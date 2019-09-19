@@ -3,7 +3,7 @@ import { MultiProgressBar } from './multi-progress-bar';
 import { IProgressBar } from './interface-progres-bar';
 import { compile, DrawRender } from './draw';
 import { themes } from './themes';
-import { createEvents, unsigned } from './utils';
+import { createEvents, unsigned, removeEmojiPresentation } from './utils';
 
 export type ProgressBarHook = (bar: ProgressBar) => any;
 
@@ -104,7 +104,8 @@ export class ProgressBar implements IProgressBar {
   }
 
   private constructor(options: Partial<ProgressBarOptions> = {}) {
-    this.title = options.title || '';
+    this.title =
+      options.title !== undefined ? removeEmojiPresentation(options.title) : '';
 
     this.total = options.total || 100;
     this.current = options.current || 0;

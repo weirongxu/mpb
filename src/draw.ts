@@ -9,13 +9,11 @@ import {
   ansiWidth,
   unsigned,
   AlignPostion,
-  ansiPadAlign
+  ansiPadAlign,
+  ansiWidthWithCache
 } from './utils';
 
-export type ExtendRender = (
-  bar: IProgressBar,
-  width: number
-) => string;
+export type ExtendRender = (bar: IProgressBar, width: number) => string;
 
 export class Extend {
   extendRender: ExtendRender;
@@ -25,10 +23,7 @@ export class Extend {
   }
 }
 
-export type DrawPart =
-  | string
-  | number
-  | Extend;
+export type DrawPart = string | number | Extend;
 
 export interface CharBarOptions {
   /**
@@ -107,9 +102,7 @@ draw.toStr = (bar, drawable, width) => {
     .reduce((ret, v) => ret + v, 0);
   const remainWidth = width - occupiedWidth;
 
-  const extendCount = drawParts.filter(
-    part => part instanceof Extend
-  ).length;
+  const extendCount = drawParts.filter(part => part instanceof Extend).length;
   const subWidth = Math.floor(remainWidth / extendCount);
 
   let subRemainder = remainWidth % extendCount;
@@ -150,16 +143,19 @@ draw.charBar = (options_ = {}) => {
 
     let barComplete = ansiRepeat(options.complete, completedWidth);
     if (!bar.completed && options.completeTop !== options.complete) {
-      const topWidth = ansiWidth(options.completeTop);
-      barComplete = ansiCover(
-        barComplete,
-        ansiSlice(
-          options.completeTop,
-          Math.max(0, topWidth - completedWidth),
-          topWidth
-        ),
-        'right'
+      const topWidth = ansiWidthWithCache(options.completeTop);
+      const completeTopStartIndex = Math.max(0, topWidth - completedWidth);
+      const completeTop = ansiSlice(
+        options.completeTop,
+        completeTopStartIndex,
+        topWidth
       );
+      barComplete =
+        ansiSlice(
+          barComplete,
+          0,
+          completedWidth - topWidth + completeTopStartIndex
+        ) + completeTop;
     }
 
     const incompleteWidth = unsigned(width - ansiWidth(barComplete));
@@ -232,11 +228,7 @@ draw.align = (options_ = {}) => {
     if (content.length === 0) {
       return ' '.repeat(width);
     } else {
-      return ansiPadAlign(
-        content,
-        width,
-        options.align
-      );
+      return ansiPadAlign(content, width, options.align);
     }
   });
 };

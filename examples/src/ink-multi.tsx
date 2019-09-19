@@ -4,19 +4,19 @@ import SelectInput from 'ink-select-input';
 import { themes } from '../../';
 import { useMultiProgressBar } from '../../lib/react-hooks';
 
-function Select(props: { onAdd: () => any; onExit: () => any }) {
+function Select(props: { onNew: () => any; onExit: () => any }) {
   return <SelectInput
     items={[
       {
-        label: 'Add',
-        value: 'add'
+        label: 'New progress',
+        value: 'new'
       },
       {
         label: 'Exit',
         value: 'exit'
       }
     ]}
-    onSelect={item => (item.value === 'add' ? props.onAdd() : props.onExit())}
+    onSelect={item => (item.value === 'new' ? props.onNew() : props.onExit())}
   ></SelectInput>;
 }
 
@@ -30,10 +30,10 @@ function App() {
     <>
       <Select
         onExit={() => app.unmount()}
-        onAdd={() => {
+        onNew={() => {
           if (! multiBar) return;
           const bar = multiBar.startBar({
-            title: ['✗✗', '进度', '🎉🎉🎉🎉', '😅️😅︎😄😄'][id%4] + ' ' + id,
+            title: ['✗✗', '进度', '🎉🎉🎉🎉', '😅️😅︎😄😄👪'][id%4] + ' ' + id,
             clean: true,
             total: 100,
             width: process.stdout.columns!,
